@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
+// page imports
 import '../utils/question.dart';
 import '../utils/quiz.dart';
+
+// ui widget imports
+import '../ui/answer_button.dart';
 
 // stateful widget that can be rebuilt with new data
 // can be used for feedback, animation, changing data,
@@ -27,17 +31,7 @@ class QuizPageState extends State<QuizPage> {
           // main page
           children: <Widget>[
             // true button
-            new Expanded(
-              child: new Material(
-                color: Colors.greenAccent,
-                child: new InkWell(
-                  onTap: () => print('answered true'),
-                  child: new Center(
-                    child: new Container(child: new Text("True")),
-                  ),
-                ),
-              ),
-            ),
+            new AnswerButton(),
             // false button
             new Expanded(
               child: new Material(
