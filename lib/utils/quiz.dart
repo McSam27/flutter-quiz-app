@@ -1,4 +1,4 @@
-import './questions.dart';
+import './question.dart';
 
 class Quiz {
   // to make a private variable, we prefix the variable with an "_"
