@@ -31,19 +31,9 @@ class QuizPageState extends State<QuizPage> {
           // main page
           children: <Widget>[
             // true button
-            new AnswerButton(),
+            new AnswerButton(true, () => print('true')),
             // false button
-            new Expanded(
-              child: new Material(
-                color: Colors.redAccent,
-                child: new InkWell(
-                  onTap: () => print('answered false'),
-                  child: new Center(
-                    child: new Container(child: new Text("false")),
-                  ),
-                ),
-              ),
-            ),
+            new AnswerButton(false, () => print('false')),
           ],
         )
       ],
