@@ -32,6 +32,17 @@ class QuizPageState extends State<QuizPage> {
           children: <Widget>[
             // true button
             new AnswerButton(true, () => print('true')),
+            new Material(
+              color: Colors.white,
+              child: new Padding(
+                padding: new EdgeInsets.symmetric(
+                  vertical: 20.0
+                ),
+                child: new Center(
+                  child: new Text("Statement 1: Pizza is nice"),
+                ),
+              ),
+            ),
             // false button
             new AnswerButton(false, () => print('false')),
           ],
