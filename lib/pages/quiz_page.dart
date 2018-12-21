@@ -7,6 +7,7 @@ import '../utils/quiz.dart';
 // ui widget imports
 import '../ui/answer_button.dart';
 import '../ui/question_label.dart';
+import '../ui/answer_overlay.dart';
 
 // stateful widget that can be rebuilt with new data
 // can be used for feedback, animation, changing data,
@@ -27,6 +28,7 @@ class QuizPageState extends State<QuizPage> {
   Widget build(BuildContext context) {
     // Stack - places children on top of each other
     return new Stack(
+      fit: StackFit.expand,
       children: <Widget>[
         new Column(
           // main page
@@ -38,7 +40,8 @@ class QuizPageState extends State<QuizPage> {
             // false button
             new AnswerButton(false, () => print('false')),
           ],
-        )
+        ),
+        new AnswerOverlay(false),
       ],
     );
   }
