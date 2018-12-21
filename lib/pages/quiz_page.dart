@@ -6,6 +6,7 @@ import '../utils/quiz.dart';
 
 // ui widget imports
 import '../ui/answer_button.dart';
+import '../ui/question_label.dart';
 
 // stateful widget that can be rebuilt with new data
 // can be used for feedback, animation, changing data,
@@ -32,17 +33,8 @@ class QuizPageState extends State<QuizPage> {
           children: <Widget>[
             // true button
             new AnswerButton(true, () => print('true')),
-            new Material(
-              color: Colors.white,
-              child: new Padding(
-                padding: new EdgeInsets.symmetric(
-                  vertical: 20.0
-                ),
-                child: new Center(
-                  child: new Text("Statement 1: Pizza is nice"),
-                ),
-              ),
-            ),
+            // question label
+            new QuestionText("Pizza is awesome", 2),
             // false button
             new AnswerButton(false, () => print('false')),
           ],
