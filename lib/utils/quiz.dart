@@ -15,6 +15,7 @@ class Quiz {
   int get length => _questions.length;
   int get score => _score;
   int get questionNumber => _currentQuestionIndex + 1;
+
   // getter in Dart function syntax
   Question get nextQuestion {
     _currentQuestionIndex++;

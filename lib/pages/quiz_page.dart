@@ -16,7 +16,6 @@ import '../ui/answer_overlay.dart';
 class QuizPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return new QuizPageState();
   }
 }
@@ -24,6 +23,35 @@ class QuizPage extends StatefulWidget {
 // variables and logic goes in the extending class
 // mutable
 class QuizPageState extends State<QuizPage> {
+  Question currentQuestion;
+  Quiz quiz = new Quiz(
+    [
+      new Question("Is Elon Musk human?", true),
+      new Question("Is pizza healthy?", false),
+      new Question("Is Flutter awesome?", true),
+    ],
+  );
+  String questionText;
+  int questionNumber;
+  bool isCorrect;
+  bool showOverlay = false;
+
+  @override
+  void initState() {
+    super.initState();
+    currentQuestion = quiz.nextQuestion;
+    questionText = currentQuestion.question;
+    questionNumber = quiz.questionNumber;
+  }
+
+  void handleAnswer(bool answer) {
+    isCorrect = (currentQuestion.answer == answer);
+    quiz.answer(isCorrect);
+    this.setState(() {
+      showOverlay = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // Stack - places children on top of each other
@@ -34,14 +62,14 @@ class QuizPageState extends State<QuizPage> {
           // main page
           children: <Widget>[
             // true button
-            new AnswerButton(true, () => print('true')),
+            new AnswerButton(true, () => handleAnswer(true)),
             // question label
-            new QuestionText("Pizza is awesome", 2),
+            new QuestionText(questionText, questionNumber),
             // false button
-            new AnswerButton(false, () => print('false')),
+            new AnswerButton(false, () => handleAnswer(false)),
           ],
         ),
-        new AnswerOverlay(false),
+        showOverlay ? new AnswerOverlay(isCorrect) : new Container(), // empty container doesn't display anything
       ],
     );
   }
