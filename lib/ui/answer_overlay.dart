@@ -3,8 +3,9 @@ import 'dart:math';
 
 class AnswerOverlay extends StatefulWidget {
   final bool _isCorrect;
+  final VoidCallback _onTap;
 
-  AnswerOverlay(this._isCorrect);
+  AnswerOverlay(this._isCorrect, this._onTap);
 
   AnswerOverlayState createState() => AnswerOverlayState();
 }
@@ -34,7 +35,7 @@ class AnswerOverlayState extends State<AnswerOverlay>
     return new Material(
       color: Colors.black54,
       child: new InkWell(
-          onTap: () => print('you tapped the overlay'),
+          onTap: () => widget._onTap(),
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[

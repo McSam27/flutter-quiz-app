@@ -52,6 +52,17 @@ class QuizPageState extends State<QuizPage> {
     });
   }
 
+  void handleNextQuestion() {
+    // NOTE: When accessing a class getter function, you do not need to run the function
+    // you can simply access it like a property of the class
+    currentQuestion = quiz.nextQuestion;
+    this.setState(() {
+      showOverlay = false;
+      questionText = currentQuestion.question;
+      questionNumber = quiz.questionNumber;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // Stack - places children on top of each other
@@ -69,7 +80,7 @@ class QuizPageState extends State<QuizPage> {
             new AnswerButton(false, () => handleAnswer(false)),
           ],
         ),
-        showOverlay ? new AnswerOverlay(isCorrect) : new Container(), // empty container doesn't display anything
+        showOverlay ? new AnswerOverlay(isCorrect, handleNextQuestion) : new Container(), // empty container doesn't display anything
       ],
     );
   }
