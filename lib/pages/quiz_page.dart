@@ -31,6 +31,10 @@ class QuizPageState extends State<QuizPage> {
       new Question("Is Elon Musk human?", true),
       new Question("Is pizza healthy?", false),
       new Question("Is Flutter awesome?", true),
+      new Question("Is the sky blue?", true),
+      new Question("Is the grass green?", true),
+      new Question("Does 2 plus 2 equal 4?", true),
+      new Question("Is Fortnite an awesome game?", true),
     ],
   );
   String questionText;
