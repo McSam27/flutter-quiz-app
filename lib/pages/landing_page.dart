@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './quiz_page.dart';
 
 /** Stateless widget
  * a widget with no direct state management. it only renders the value/data from the state
@@ -11,7 +12,7 @@ class LandingPage extends StatelessWidget {
       color: Colors.greenAccent,
       // button widget
       child: new InkWell(
-        onTap: () => print('tapped'),
+        onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new QuizPage())),
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
