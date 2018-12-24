@@ -36,6 +36,14 @@ class QuestionTextState extends State<QuestionText>
     _fontSizeAnimationController.forward();
   }
 
+  // dispose animations when questions are no longer shown
+  // free the animation resources
+  @override
+  void dispose() {
+    _fontSizeAnimationController.dispose();
+    super.dispose();
+  }
+
   // handle when the widget gets updated with new text
   @override
   void didUpdateWidget(QuestionText oldWidget) {

@@ -31,6 +31,12 @@ class AnswerOverlayState extends State<AnswerOverlay>
   }
 
   @override
+  void dispose() {
+    _iconAnimationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return new Material(
       color: Colors.black54,

@@ -9,6 +9,8 @@ import '../ui/answer_button.dart';
 import '../ui/question_label.dart';
 import '../ui/answer_overlay.dart';
 
+import '../pages/score_page.dart';
+
 // stateful widget that can be rebuilt with new data
 // can be used for feedback, animation, changing data,
 
@@ -55,6 +57,17 @@ class QuizPageState extends State<QuizPage> {
   void handleNextQuestion() {
     // NOTE: When accessing a class getter function, you do not need to run the function
     // you can simply access it like a property of the class
+    if (quiz.length == questionNumber) {
+      // remove all previous pages from navigation stack
+      Navigator.of(context).pushAndRemoveUntil(
+        new MaterialPageRoute(
+          builder: (BuildContext context) =>
+              new ScorePage(quiz.score, quiz.length),
+        ),
+        (Route route) => route == null,
+      );
+      return;
+    }
     currentQuestion = quiz.nextQuestion;
     this.setState(() {
       showOverlay = false;
@@ -80,7 +93,9 @@ class QuizPageState extends State<QuizPage> {
             new AnswerButton(false, () => handleAnswer(false)),
           ],
         ),
-        showOverlay ? new AnswerOverlay(isCorrect, handleNextQuestion) : new Container(), // empty container doesn't display anything
+        showOverlay
+            ? new AnswerOverlay(isCorrect, handleNextQuestion)
+            : new Container(), // empty container doesn't display anything
       ],
     );
   }

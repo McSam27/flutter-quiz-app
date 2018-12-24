@@ -12,6 +12,7 @@ class LandingPage extends StatelessWidget {
       color: Colors.greenAccent,
       // button widget
       child: new InkWell(
+        // navigate to new page
         onTap: () => Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new QuizPage())),
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
